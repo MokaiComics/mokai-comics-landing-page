@@ -1,0 +1,81 @@
+.decoracao::after {
+    height: 14px;
+    width: 90px;
+    left: -20px;
+    bottom: -10px;
+    background: linear-gradient(to right, #ba19e600, #ba19e6);
+    border-radius: 0px 200px 200px 0px;
+    transform: rotate(-30deg)
+}
+
+.decoracao2::after {
+    height: 12px;
+    width: 60px;
+    left: -20px;
+    bottom: 5px;
+    background: linear-gradient(to right, #ba19e600, #ba19e6);
+    border-radius: 0px 200px 200px 0px;
+    transform: rotate(-30deg)
+}
+
+.decoracao3::after {
+    overflow: hidden;
+    height: 14px;
+    width: 86px;
+    right: -1px;
+    bottom: 20px;
+    background: linear-gradient(to left, #ba19e600, #ba19e6);
+    border-radius: 200px 0px 0px 200px;
+    transform: rotate(-28deg)
+}
+
+.decoracao4::after {
+    overflow: hidden;
+    height: 12px;
+    width: 64px;
+    right: -1px;
+    bottom: 2px;
+    background: linear-gradient(to left, #ba19e600, #ba19e6);
+    border-radius: 200px 0px 0px 200px;
+    transform: rotate(-28deg)
+}
+
+.card {
+    transition: transform 0.3s ease-in-out; 
+}
+
+.card h3, #number {
+    transition: color 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card:hover h3 {
+    color: #B724E2;
+}
+
+.card:hover #number {
+    color: #9537B0;
+}
+
+.card-valor {
+    transition: background-color 0.3s ease-in-out;
+}
+
+.card-valor #valor-descricao,#valor-titulo {
+    transition: color 0.3s ease-in-out;
+}
+
+.card-valor:hover {
+    background-color: #FFFFFF;
+}
+
+.card-valor:hover #valor-descricao {
+    color: #04011A;
+}
+
+.card-valor:hover #valor-titulo {
+    color: #B919E6;
+}
