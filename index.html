@@ -16,7 +16,8 @@
     
     <!-- font-family: 'Inter', sans-serif;
     font-family: 'Poppins', sans-serif; -->
-
+    
+    <script src="./scripts/script.js"></script>
     <!-- ------ Tailwind ------ -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -42,17 +43,36 @@
               white100: '#BBBBBB',
               white200: '#434044',
               white300: '#ADADAD',
-              black: '#04011A'
+              black: '#04011A',
+              black100: '#0F0B30'
             },
             backgroundImage: {
               'banner': "url('/assets/landing-page-banner.svg')",
+              'mobile-banner':"url('/assets/mobile-banner.svg')"
             },
             height: {
               'banner':'657px',
-              'illustration':'382px'
+              'tablet-banner':'460px',
+              'mobile-banner':'285px',
+              'illustration':'382px',
+              'menu-illustration':'210px',
+              'logo-mobile':'31.62px',
+              'logo-normal':'51.23px',
+              'mobile-illustration':'177px',
+              'icon-valor-mobile':'19.23px',
+              'icon-valor':'36px',
+              'social-icons':'51.72px',
             },
             width: {
-              'illustration':'573px'
+              'illustration':'573px',
+              'menu-illustration':'318px',
+              'logo-mobile':'29.63px',
+              'logo-normal':'48px',
+              'mobile-illustration':'268px',
+              'icon-valor-mobile':'19.41px',
+              'icon-valor':'36.33px',
+              'social-icons':'51.72px',
+              'mobile-card-produtos':'292px'
             },
             margin: {
               'title':'204px'
@@ -64,9 +84,9 @@
     <link rel="stylesheet" href="./index.css">
 </head>
 <body class="bg-black">
-    <header class="flex z-10 bg-black fixed w-full items-center lg:justify-between lg:px-16 lg:py-10">
-      <img src="./assets/mokai-comics-logo.svg" alt="logo">
-      <nav class="border-2 border-purple50 lg:px-6 lg:py-4 lg:rounded-full">
+    <header class="flex z-10 bg-black fixed w-full items-center justify-between px-8 py-4 lg:px-16 lg:py-10">
+      <img class="h-logo-mobile w-logo-mobile lg:h-logo-normal lg:w-logo-normal" src="./assets/mokai-comics-logo.svg" alt="logo">
+      <nav class="hidden lg:block border-2 border-purple50 lg:px-6 lg:py-4 lg:rounded-full">
         <ul class="font-inter flex lg:gap-8 ">
           <li>
             <a href="#sobre" class="text-white duration-300 hover:bg-purple200 hover:px-3 hover:py-2 hover:rounded-full lg:text-sm">Sobre</a>
@@ -82,45 +102,97 @@
           </li>
         </ul>
       </nav>
-      <img src="./assets/mokai-comics-nome.svg" alt="mokai-comics">
+      <img class="hidden lg:block" src="./assets/mokai-comics-nome.svg" alt="mokai-comics">
+      <!-- menu mobile -->
+      <button id="menu-toggle" onclick="openMenu()" class="block lg:hidden">
+        <img src="./assets/menu-icon.svg" alt="icone-menu">
+      </button>
+      <div id="menu" class="hidden bg-black top-0 right-0 absolute z-10 transition-transform duration-300 transform">
+        <div class="flex flex-col items-end">
+          <button onclick="closeMenu()" class="px-8 py-8">
+            <img src="./assets/close-menu.svg" alt="">
+          </button>
+          <ul class="font-poppins font-semibold flex flex-col items-end gap-5 p-8">
+            <li>
+              <a href="#sobre" class="text-white text-md">Sobre</a>
+            </li>
+            <li>
+              <a href="#produtos" class="text-white text-md">Serviços e Produtos</a>
+            </li>
+            <li>
+              <a href="#missao" class="text-white text-md">Missão</a>
+            </li>
+            <li>
+              <a href="#contato" class="text-white text-md">Contato</a>
+            </li>
+          </ul>          
+        </div>
+        <img class="h-menu-illustration w-menu-illustration" src="./assets/menu-illustration.svg" alt="">
+      </div>
     </header>
     <main>
       <!-- inicio -->
-      <section class="bg-banner bg-cover flex justify-center lg:pb-12 lg:h-banner">
-        <div class="self-end">
-          <h1 class="font-poppins text-white font-semibold text-center lg:text-5xl lg:mb-title">ENCONTRE SEU MUNDO PREFERIDO</h1>
-          <p class="font-poppins text-white font-semibold text-center justify-self-end lg:text-xl">Todas as suas HQs em um lugar, acessíveis em qualquer lugar e hora, porque suas aventuras não podem esperar</p>          
+      <section class="bg-mobile-banner h-mobile-banner sm:h-tablet-banner lg:bg-banner bg-cover flex justify-center md:pb-12 lg:h-banner">
+        <div class="self-center md:self-end">
+          <h1 class="hidden font-poppins text-white font-semibold text-center md:block md:text-3xl lg:text-5xl md:mb-20 lg:mb-title">ENCONTRE SEU MUNDO FAVORITO</h1>
+          <p class="hidden font-poppins text-white font-semibold text-center justify-self-end md:block md:text-lg lg:text-xl">Todas as suas HQs em um lugar, acessíveis em qualquer lugar e hora, porque suas aventuras não podem esperar</p>
+          <h1 class="block font-poppins text-xl text-white font-semibold text-center mb-3 sm:mb-7 md:hidden">
+            ENCONTRE SEU
+          </h1>
+          <h1 class="text-2xl block font-poppins text-white font-semibold text-center md:hidden">
+            MUNDO FAVORITO
+          </h1>          
         </div>
       </section>
 
       <!-- sobre -->
-      <section id="sobre" class="flex relative lg:p-16 lg:gap-6">
-        <section>
-          <div class="flex items-center lg:gap-3 lg:mb-7">
+      <section id="sobre" class="hidden lg:flex relative p-16 gap-4">
+        <section class="block">
+          <div class="flex flex-row items-center gap-3 mb-7">
             <img src="./assets/profile-pic.svg" alt="icone-pessoa">
-            <h2 class="font-poppins font-light text-purple100 lg:text-3xl"><span class="font-semibold">Quem</span> Somos</h2>
+            <h2 class="font-poppins font-light text-purple100 lg:text-left lg:text-3xl"><span class="font-semibold">Quem</span> Somos</h2>
           </div>
-          <span class="block bg-gradient-to-r from-purple300 to-purple400 rounded-full lg:w-8 lg:h-1 lg:mb-3 lg:ml-1"></span>
-          <p class="font-satoshi text-white50 lg:text-xl lg:ml-1 lg:mb-2">
+          <span class="hidden lg:block bg-gradient-to-r from-purple300 to-purple400 rounded-full lg:w-8 lg:h-1 lg:mb-3 lg:ml-1"></span>
+          <p class="font-satoshi text-white50 mb-2 text-xl lg:ml-1">
             A Mokai Comics é uma plataforma nacional de leitura digital que aspira proporcionar uma experiência única de leitura de histórias em quadrinho asiáticas e brasileiras através de um aplicativo acessível a qualquer pessoa que possua um celular e acesso à Internet, pretendemos oferecer uma variedade de mangás, novels, manhuas, webtoons, manhwas e quadrinhos.
           </p>    
-          <p class="font-satoshi text-white50 lg:text-xl lg:ml-1">
+          <p class=" font-satoshi text-white50 text-xl lg:ml-1">
             Pretendemos criar um ambiente de comunidade ativa, onde os leitores possam compartilhar suas obras preferidas, interagir, discutir e se divertir enquanto esperam um novo capítulo dentro e fora da aplicação que se encontra em desenvolvimento proporcionando uma experiência imersiva diferente das atuais plataformas no mercado que se limitam a possibilidade de leitura, muitas vezes indisponível em português.
           </p>     
         </section>
-        <!-- <span class="after:absolute after:block after:h-2 after:w-10 after:bg-white after:left-0 after:bottom-0 after:transform after:translate-y-2 after:rounded-r-full"></span>  -->
-        <span class="after:absolute after:block decoracao"></span> 
-        <span class="after:absolute after:block decoracao2"></span>
-        <img class="h-illustration w-illustration" src="./assets/landing-page-illustration.png" alt="imagem-pessoas">
+        <span class="after:absolute decoracao"></span> 
+        <span class="after:absolute decoracao2"></span>
+        <img class="h-mobile-illustration w-mobile-illustration lg:h-illustration lg:w-illustration" src="./assets/landing-page-illustration.png" alt="imagem-pessoas">
+      </section>
+
+      <!-- sobre mobile -->
+      <section id="sobre" class="lg:hidden flex flex-col items-center p-6 relative gap-5">
+        <span class="after:absolute decoracao-mobile"></span> 
+        <span class="after:absolute decoracao-mobile-2"></span>
+        <span class="after:absolute decoracao-mobile-3"></span> 
+        <span class="after:absolute decoracao-mobile-4"></span>
+        <div class="flex flex-col items-center gap-3">
+          <img src="./assets/profile-pic.svg" alt="icone-pessoa">
+          <h2 class="font-poppins font-light text-purple100 text-xl text-center"><span class="font-semibold">Quem</span> Somos</h2>
+        </div>
+        <img class="h-mobile-illustration w-mobile-illustration mb-4" src="./assets/landing-page-illustration.png" alt="imagem-pessoas">
+        <div>
+          <p class="font-satoshi text-white50 text-xs text-center mb-3 md:text-left md:text-lg">
+            A Mokai Comics é uma plataforma nacional de leitura digital que aspira proporcionar uma experiência única de leitura de histórias em quadrinho asiáticas e brasileiras através de um aplicativo acessível a qualquer pessoa que possua um celular e acesso à Internet, pretendemos oferecer uma variedade de mangás, novels, manhuas, webtoons, manhwas e quadrinhos.
+          </p>    
+          <p class=" font-satoshi text-white50 text-xs text-center md:text-left md:text-lg">
+            Pretendemos criar um ambiente de comunidade ativa, onde os leitores possam compartilhar suas obras preferidas, interagir, discutir e se divertir enquanto esperam um novo capítulo dentro e fora da aplicação que se encontra em desenvolvimento proporcionando uma experiência imersiva diferente das atuais plataformas no mercado que se limitam a possibilidade de leitura, muitas vezes indisponível em português.
+          </p>               
+        </div>
       </section>
 
       <!-- produtos -->
-      <section id="produtos" class="relative lg:p-16">
-        <span class="after:absolute after:block decoracao3"></span> 
-        <span class="after:absolute after:block decoracao4"></span>
-        <div class="flex items-center lg:gap-3 lg:mb-16">
+      <section id="produtos" class="hidden lg:block relative lg:p-16">
+        <span class="after:absolute decoracao3"></span> 
+        <span class="after:absolute decoracao4"></span>
+        <div class="flex flex-col lg:flex-row mb-10 items-center gap-3">
           <img src="./assets/start-pic.svg" alt="icone-medalha">
-          <h2 class="font-poppins font-light text-purple100 lg:text-3xl"><span class="font-semibold">O que</span> oferecemos?</h2>
+          <h2 class="font-poppins font-light text-purple100 text-xl lg:text-3xl"><span class="font-semibold">O que</span> oferecemos?</h2>
         </div>
         <section class="grid lg:grid-cols-3 lg:gap-6">
           <div class="card border border-white200 hover:border-purple500 lg:rounded-xl lg:px-6 lg:py-5">
@@ -147,87 +219,128 @@
         </section>
       </section>
 
-      <!-- missao e valores -->
-      <section id="missao" class="lg:p-16">
-        <div class="flex items-center lg:gap-3 lg:mb-10">
-          <img src="./assets/check-box-pic.svg" alt="icone-checkbox">
-          <h2 class="font-poppins font-light text-purple100 lg:text-3xl"><span class="font-semibold">Missão</span> & <span class="font-semibold">Valores</span></h2>
+      <!-- produtos mobile -->
+      <section id="produtos" class="relative mb-6 lg:hidden">
+        <div class="flex flex-col mb-10 items-center gap-3">
+          <img src="./assets/start-pic.svg" alt="icone-medalha">
+          <h2 class="font-poppins font-light text-purple100 text-xl lg:text-3xl"><span class="font-semibold">O que</span> oferecemos?</h2>
         </div>
-        <p class="font-satoshi text-white lg:text-xl lg:mb-20">
+
+        <section class="flex flex-col gap-6 px-8 items-center">
+          <div class="rounded-lg max-w-72 area1">
+            <div class="relative">
+              <img src="./assets/produto-1-illustration.svg" alt="">
+              <span class="block absolute bottom-2 right-3 font-poppins font-semibold text-base">01</span>
+            </div>
+            <div class="bg-white p-4 rounded-b-lg">
+              <h3 class="font-satoshi font-black text-black text-center text-sm mb-2">Acervo de HQs variadas</h3>
+              <p class="font-satoshi font-regular text-black text-center text-xs">
+                A Mokai Comics oferecerá uma ampla coleção de histórias em quadrinhos asiáticas e brasileiras, proporcionando uma experiência diversificada aos leitores com mangás, novels manhuas, webtoons, manhwas e outros formatos acessíveis.
+              </p>
+            </div>
+          </div>
+          <div class="rounded-lg max-w-72 area2">
+            <div class="relative">
+              <img src="./assets/produto-2-illustration.svg" alt="">
+              <span class="block absolute bottom-2 right-3 font-poppins font-semibold text-base">02</span>
+            </div>
+            <div class="bg-white p-4 rounded-b-lg">
+              <h3 class="font-satoshi font-black text-black text-center text-sm mb-2">Comunidade</h3>
+              <p class="font-satoshi font-regular text-black text-center text-xs">
+                A plataforma criará um ambiente interativo e engajador para os leitores que poderão interagir, compartilhar suas obras preferidas, discutir histórias e usufruir de funcionalidades como recomendações personalizadas, listas de leitura, avaliações de obras e área de comunidade, tornando a experiência de leitura mais envolvente e interativa.
+              </p>
+            </div>
+          </div>
+          <div class="rounded-lg max-w-72 area3">
+            <div class="relative">
+              <img src="./assets/produto-3-illustration.svg" alt="">
+              <span class="block absolute bottom-2 right-3 font-poppins font-semibold text-base">03</span>
+            </div>
+            <div class="bg-white p-4 rounded-b-lg">
+              <h3 class="font-satoshi font-black text-black text-center text-sm mb-2">Gameplay</h3>
+              <p class="font-satoshi font-regular text-black text-center text-xs">
+                A Mokai Comics incluirá elementos de gameplay para proporcionar uma experiência mais imersiva aos usuários, oferecendo conquistas, rankings e um modelo que incentivará a participação e interação na comunidade de leitores.
+              </p>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- missao e valores -->
+      <section id="missao" class="p-8 lg:p-16">
+        <div class="flex flex-col lg:flex-row items-center mb-2.5 gap-3 lg:gap-3 lg:mb-10">
+          <img src="./assets/check-box-pic.svg" alt="icone-checkbox">
+          <h2 class="font-poppins font-light text-purple100 text-xl text-center lg:text-left lg:text-3xl"><span class="font-semibold">Missão</span> & <span class="font-semibold">Valores</span></h2>
+        </div>
+        <p class="font-satoshi text-white text-xs text-center mb-6 lg:text-left md:text-lg lg:text-xl lg:mb-20">
           A missão da Mokai é democratizar o acesso a HQs de alta qualidade, oferecendo uma experiência excepcional de leitura digital e traduções de excelência para apaixonados por mangás, novels, manhuas, webtoons, manhwas e diversos outros tipos de quadrinhos, facilitando o acesso a todos os fãs dessas obras.       
         </p>
-        <section class="grid grid-cols-2 lg:gap-11">
-          <div class="card-valor border border-white200 lg:p-11 lg:rounded-xl">
-            <div class="flex items-center lg:gap-4 lg:mb-3">
-              <img src="./assets/plus-pic.svg" alt="icone-plus">
-              <p id="valor-titulo" class="font-poppins font-semibold text-purple100 lg:text-xl">Paixão pela cultura pop asiática</p>
+        <section class="grid grid-cols-1 gap-5 lg:grid-cols-2 lg:gap-11">
+          <div class="card-valor border border-white200 bg-black100 p-6 rounded-lg lg:p-11 lg:rounded-xl">
+            <div class="flex items-center gap-2 lg:gap-4 mb-2 lg:mb-3">
+              <img class="h-icon-valor-mobile w-icon-valor-mobile md:h-icon-valor md:w-icon-valor" src="./assets/plus-pic.svg" alt="icone-plus">
+              <p id="valor-titulo" class="font-poppins font-semibold text-purple100 text-xs md:text-lg lg:text-xl">Paixão pela cultura pop asiática</p>
             </div>
-            <p id="valor-descricao" class="font-satoshi text-white lg:text-xl">
+            <p id="valor-descricao" class="font-satoshi text-white text-xs md:text-lg lg:text-xl">
               Nossa equipe é apaixonada por HQs asiáticas, o que nos torna cada vez mais determinados a criar um ambiente divertido e interativo para todos os fãs dessas obras.
             </p>
           </div>
-          <div class="card-valor border border-white200 lg:p-11 lg:rounded-xl">
-            <div class="flex items-center lg:gap-4 lg:mb-3">
-              <img src="./assets/plus-pic.svg" alt="icone-plus">
-              <p id="valor-titulo" class="font-poppins font-semibold text-purple100 lg:text-xl">Inovação</p>
+          <div class="card-valor border border-white200 bg-black100 p-6 rounded-lg lg:p-11 lg:rounded-xl">
+            <div class="flex items-center gap-2 lg:gap-4 mb-2 lg:mb-3">
+              <img class="h-icon-valor-mobile w-icon-valor-mobile md:h-icon-valor md:w-icon-valor" src="./assets/plus-pic.svg" alt="icone-plus">
+              <p id="valor-titulo" class="font-poppins font-semibold text-purple100 text-xs md:text-lg lg:text-xl">Inovação</p>
             </div>
-            <p id="valor-descricao" class="font-satoshi text-white lg:text-xl">
+            <p id="valor-descricao" class="font-satoshi text-white text-xs md:text-lg lg:text-xl">
               Estamos constantemente procurando maneiras de melhorar a plataforma e oferecer uma experiência excepcional aos nossos usuários. 
             </p>
           </div>
-          <div class="card-valor border border-white200 lg:p-11 lg:rounded-xl">
-            <div class="flex items-center lg:gap-4 lg:mb-3">
-              <img src="./assets/plus-pic.svg" alt="icone-plus">
-              <p id="valor-titulo" class="font-poppins font-semibold text-purple100 lg:text-xl">Acessibilidade</p>
+          <div class="card-valor border border-white200 bg-black100 p-6 rounded-lg lg:p-11 lg:rounded-xl">
+            <div class="flex items-center gap-2 lg:gap-4 mb-2 lg:mb-3">
+              <img class="h-icon-valor-mobile w-icon-valor-mobile md:h-icon-valor md:w-icon-valor" src="./assets/plus-pic.svg" alt="icone-plus">
+              <p id="valor-titulo" class="font-poppins font-semibold text-purple100 text-xs md:text-lg lg:text-xl">Acessibilidade</p>
             </div>
-            <p id="valor-descricao" class="font-satoshi text-white lg:text-xl">
+            <p id="valor-descricao" class="font-satoshi text-white text-xs md:text-lg lg:text-xl">
               Estamos comprometidos em tornar as HQs asiáticas acessíveis a todos, independentemente de onde estejam no mundo ou do seu nível de renda.
             </p>
           </div>
-          <div class="card-valor border border-white200 lg:p-11 lg:rounded-xl">
-            <div class="flex items-center lg:gap-4 lg:mb-3">
-              <img src="./assets/plus-pic.svg" alt="icone-plus">
-              <p id="valor-titulo" class="font-poppins font-semibold text-purple100 lg:text-xl">Comunidade</p>
+          <div class="card-valor border border-white200 bg-black100 p-6 rounded-lg lg:p-11 lg:rounded-xl">
+            <div class="flex items-center gap-2 lg:gap-4 mb-2 lg:mb-3">
+              <img class="h-icon-valor-mobile w-icon-valor-mobile md:h-icon-valor md:w-icon-valor" src="./assets/plus-pic.svg" alt="icone-plus">
+              <p id="valor-titulo" class="font-poppins font-semibold text-purple100 text-xs md:text-lg lg:text-xl">Comunidade</p>
             </div>
-            <p id="valor-descricao" class="font-satoshi text-white lg:text-xl">
+            <p id="valor-descricao" class="font-satoshi text-white text-xs md:text-lg lg:text-xl">
               Estamos comprometidos em criar um espaço onde fãs de HQs possam se conectar, interagir e compartilhar sua paixão.
             </p>
           </div>
         </section>
       </section>
     </main>
-    <footer id="contato" class="lg:py-16">
-      <section class="grid grid-cols-2 lg:px-32 lg:mb-24">
-        <img src="./assets/mokai-comics-logo.svg" alt="logo">
-        <div class="flex lg:gap-20">
-          <div>
+    <footer id="contato" class="py-10 px-2 lg:py-16">
+      <section class="grid grid-cols-1 mb-16 lg:grid-cols-2 lg:px-32 lg:mb-24">
+        <img class="hidden lg:block" src="./assets/mokai-comics-logo.svg" alt="logo">
+        <div class="flex flex-col items-center gap-16 lg:flex-row lg:gap-20">
+          <div class="flex flex-col items-center gap-8 lg:block">
             <p class="font-poppins font-black text-white lg:text-lg lg:mb-8">SIGA-NOS</p>
-            <div class="flex lg:gap-4">
-              <div>
-                <a href="https://www.instagram.com/mokaicomics/" target="_blank">
-                  <img src="./assets/instagram-icon.svg" alt="icone-instagram">
-                </a>
-              </div>
-              <div>
-                <a href="https://www.facebook.com/profile.php?id=61552794666393&mibextid=rS40aB7S9Ucbxw6v" target="_blank">
-                  <img src="./assets/facebook-icon.svg" alt="icone-facebook">
-                </a>
-              </div>
-              <div>
-                <a href="https://www.linkedin.com/company/mokai-comics/" target="_blank" class="bg-white rounded-lg block p-2.5">
-                  <img src="./assets/linkedin-icon.svg" alt="icone-linkedin">
-                </a>
-              </div>
+            <div class="flex gap-4">
+              <a href="https://www.instagram.com/mokaicomics/" target="_blank">
+                <img  src="./assets/instagram-icon.svg" alt="icone-instagram">
+              </a>
+              <a href="https://www.facebook.com/profile.php?id=61552794666393&mibextid=rS40aB7S9Ucbxw6v" target="_blank">
+                <img src="./assets/facebook-icon.svg" alt="icone-facebook">
+              </a>
+              <a href="https://www.linkedin.com/company/mokai-comics/" target="_blank" class="">
+                <img src="./assets/linkedin-icon.svg" alt="icone-linkedin">
+              </a>
             </div>
           </div>
-          <div>
+          <div class="flex flex-col items-center gap-5 lg:block">
             <p class="font-poppins font-black text-white lg:text-lg lg:mb-8">CONTATE-NOS</p>
-            <div>
-              <div class="flex lg:gap-3 lg:mb-2">
+            <div class="flex flex-col items-center gap-4 lg:block">
+              <div class="flex gap-3 lg:mb-2">
                 <img src="./assets/email-icon.svg" alt="icone-email">
                 <p class="font-poppins font-medium text-white100 lg:text-m">mokaicomics@gmail.com</p>
               </div>
-              <div class="flex lg:gap-3">
+              <div class="flex gap-3">
                 <img src="./assets/whatsapp-icon.svg" alt="icone-whatsapp">
                 <p class="font-poppins font-medium text-white100 lg:text-m">(88)992208102</p>
               </div>
@@ -235,9 +348,11 @@
           </div>          
         </div>
       </section>
-      <p class="font-satoshi text-white text-center lg:text-lg">
+      <p class="font-satoshi text-white text-center text-sm md:text-md lg:text-lg">
         Todos direitos reservados a Mokai Comics
       </p>
     </footer>
+    <script src="https://unpkg.com/scrollreveal"></script> 
+    <script src="./scripts/scrollReveal.js"></script>
 </body>
 </html>

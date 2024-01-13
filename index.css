@@ -1,43 +1,42 @@
-.decoracao::after {
-    height: 14px;
-    width: 90px;
-    left: -20px;
-    bottom: -10px;
+
+.decoracao::after, .decoracao2::after, .decoracao3::after, .decoracao4::after {
+    display: hidden;
+}
+
+.decoracao-mobile::after {
+    width: 55px;
+    height: 5px;
     background: linear-gradient(to right, #ba19e600, #ba19e6);
-    border-radius: 0px 200px 200px 0px;
-    transform: rotate(-30deg)
+    left: 0px;
+    top: 172px;
+    border-radius: 200px;
 }
 
-.decoracao2::after {
-    height: 12px;
-    width: 60px;
-    left: -20px;
-    bottom: 5px;
+.decoracao-mobile-2::after {
+    width: 72px;
+    height: 6px;
     background: linear-gradient(to right, #ba19e600, #ba19e6);
-    border-radius: 0px 200px 200px 0px;
-    transform: rotate(-30deg)
+    left: 0px;
+    top: 182px;
+    border-radius: 200px;
 }
 
-.decoracao3::after {
-    overflow: hidden;
-    height: 14px;
-    width: 86px;
-    right: -1px;
-    bottom: 20px;
+.decoracao-mobile-3::after {
+    width: 55px;
+    height: 5px;
     background: linear-gradient(to left, #ba19e600, #ba19e6);
-    border-radius: 200px 0px 0px 200px;
-    transform: rotate(-28deg)
+    right: 0px;
+    top: 172px;
+    border-radius: 200px;
 }
 
-.decoracao4::after {
-    overflow: hidden;
-    height: 12px;
-    width: 64px;
-    right: -1px;
-    bottom: 2px;
+.decoracao-mobile-4::after {
+    width: 72px;
+    height: 6px;
     background: linear-gradient(to left, #ba19e600, #ba19e6);
-    border-radius: 200px 0px 0px 200px;
-    transform: rotate(-28deg)
+    right: 0px;
+    top: 182px;
+    border-radius: 200px;
 }
 
 .card {
@@ -61,7 +60,7 @@
 }
 
 .card-valor {
-    transition: background-color 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out, transform 0.4s ease-in-out;
 }
 
 .card-valor #valor-descricao,#valor-titulo {
@@ -78,4 +77,64 @@
 
 .card-valor:hover #valor-titulo {
     color: #B919E6;
+}
+
+@media (min-width: 1024px) {
+    .decoracao::after {
+        height: 14px;
+        width: 90px;
+        left: -20px;
+        bottom: -10px;
+        background: linear-gradient(to right, #ba19e600, #ba19e6);
+        border-radius: 0px 200px 200px 0px;
+        transform: rotate(-30deg)
+    }
+    
+    .decoracao2::after {
+        height: 12px;
+        width: 60px;
+        left: -20px;
+        bottom: 5px;
+        background: linear-gradient(to right, #ba19e600, #ba19e6);
+        border-radius: 0px 200px 200px 0px;
+        transform: rotate(-30deg)
+    }
+    
+    .decoracao3::after {
+        overflow: hidden;
+        height: 14px;
+        width: 86px;
+        right: -1px;
+        bottom: 20px;
+        background: linear-gradient(to left, #ba19e600, #ba19e6);
+        border-radius: 200px 0px 0px 200px;
+        transform: rotate(-28deg)
+    }
+    
+    .decoracao4::after {
+        overflow: hidden;
+        height: 12px;
+        width: 64px;
+        right: -1px;
+        bottom: 2px;
+        background: linear-gradient(to left, #ba19e600, #ba19e6);
+        border-radius: 200px 0px 0px 200px;
+        transform: rotate(-28deg)
+    }
+
+    .card-valor:hover {
+        transform: scale(1.03);
+    }
+}
+
+@media (max-width: 340px) {
+    .decoracao-mobile::after, .decoracao-mobile-3::after {
+        width: 32px;
+        height: 4px;
+    }
+
+    .decoracao-mobile-2::after, .decoracao-mobile-4::after {
+        width: 40px;
+        height: 5px;
+    }
 }
