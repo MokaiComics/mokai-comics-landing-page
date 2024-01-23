@@ -2,6 +2,9 @@ strong{
     color: white;
 }
 
+#inicio {
+    background-image: url('assets/landing-page-banner.svg');
+}
 
 .decoracao::after, .decoracao2::after, .decoracao3::after, .decoracao4::after {
     display: hidden;
@@ -128,6 +131,12 @@ strong{
 
     .card-valor:hover {
         transform: scale(1.03);
+    }
+}
+
+@media (max-width: 768px) {
+    #inicio {
+        background-image: url('assets/mobile-banner.svg');
     }
 }
 
